@@ -427,10 +427,11 @@ namespace SaenkeSlagskibe
         {
             int[,] computersBoard = AutoSetup();
 
-            int[,] playersBattleBoard = new int[9, 9];
-            int[,] computersBattleBoard = new int[9, 9];
+            int[,] playersBattleBoard = new int[9, 9]; // Creates players 'battleboard' 
+            int[,] computersBattleBoard = new int[9, 9]; // AIs 'battleboard adds AIs moves
             bool gameOn = true;
 
+            // Game goes one as long as 'playerhits' or 'computerhits' are not equal to 18.
             while (gameOn)
             {
                 Console.Clear();
@@ -441,6 +442,7 @@ namespace SaenkeSlagskibe
                 }
                 Console.Clear();
                 ComputersMove(computersBoard, ref computersBattleBoard, ref playersBoard);
+
                 if (computerHits == 18)
                 {
                     gameOn = false;
@@ -448,6 +450,7 @@ namespace SaenkeSlagskibe
             }
             Console.Clear();
 
+            // Determines who won
             if (computerHits == 18)
             {
                 PrintBoard(computersBattleBoard);
@@ -495,6 +498,7 @@ namespace SaenkeSlagskibe
             }
         }
 
+        // Weak AI for termining computer moves 
         static void ComputersMove(int[,] computersBoard, ref int[,] computersBattleBoard, ref int[,] playersBoard)
         {
             Random rand = new Random();
@@ -524,6 +528,7 @@ namespace SaenkeSlagskibe
             }
         }
 
+        // Automates player moves for testing
         static void AutoPlayersMove(int[,] playersBoard, ref int[,] playersBattleBoard, ref int[,] computersBoard)
         {
             Console.WriteLine("Your Ships: ");
